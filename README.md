@@ -15,3 +15,4 @@ seguindo a ordem abaixo:
   * 05_table_parlamentar.sql
   * 06_table_fornecedor.sql
   * 07_table_despesa.sql
+  * 07_table_despesas_parlamentares.sql
