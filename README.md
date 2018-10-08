@@ -9,3 +9,5 @@ Para o banco de dados ser criado, os scripts localizados na pasta config/sql dav
 seguindo a ordem abaixo:
  
   * 01_create_database.sql
+  * 02_table_partido.sql
+  
