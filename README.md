@@ -13,3 +13,4 @@ seguindo a ordem abaixo:
   * 03_table_tipo_documento.sql
   * 04_table_estado.sql
   * 05_table_parlamentar.sql
+  * 06_table_fornecedor.sql

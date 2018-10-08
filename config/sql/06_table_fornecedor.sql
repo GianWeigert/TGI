@@ -1,0 +1,18 @@
+/* 
+    ESTE SCRIPT CRIA A TABELA FORNECEDOR
+*/
+
+USE gastos_parlamentares_db;
+
+-- TABELA FORNCEDOR
+
+DROP TABLE IF EXISTS fornecedor;
+
+CREATE TABLE fornecedor (
+	id INT,
+	nome VARCHAR(255) NOT NULL,
+	cnpj VARCHAR(18) NOT NULL,
+	numero INT NOT NULL
+);
+
+ALTER TABLE fornecedor MODIFY id INT AUTO_INCREMENT PRIMARY KEY;
