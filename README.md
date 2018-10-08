@@ -10,4 +10,4 @@ seguindo a ordem abaixo:
  
   * 01_create_database.sql
   * 02_table_partido.sql
-  
+  * 03_table_tipo_documento.sql
