@@ -14,3 +14,4 @@ seguindo a ordem abaixo:
   * 04_table_estado.sql
   * 05_table_parlamentar.sql
   * 06_table_fornecedor.sql
+  * 07_table_despesa.sql
