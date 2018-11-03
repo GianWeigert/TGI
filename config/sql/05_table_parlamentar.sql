@@ -9,10 +9,11 @@ USE gastos_parlamentares_db;
 DROP TABLE IF EXISTS parlamentar;
 
 CREATE TABLE parlamentar (
-	id INT,
-	nome VARCHAR(255) NOT NULL,
-	partido_id INT NOT NULL,
-	estado_id INT NOT NULL
+    id INT,
+    nome VARCHAR(255) NOT NULL,
+    numero_cadastro INT,
+    partido_id INT NOT NULL,
+    estado_id INT NOT NULL
 );
 
 ALTER TABLE parlamentar MODIFY id INT AUTO_INCREMENT PRIMARY KEY;

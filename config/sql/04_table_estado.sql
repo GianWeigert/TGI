@@ -31,7 +31,7 @@ INSERT INTO estado(nome, uf) VALUES("Goiás", "GO");
 INSERT INTO estado(nome, uf) VALUES("Maranhão", "MA");
 INSERT INTO estado(nome, uf) VALUES("Mato Grosso", "MT");
 INSERT INTO estado(nome, uf) VALUES("Mato Grosso do Sul", "MS");
-INSERT INTO estado(nome, uf) VALUES("Minas Gerais", "MS");
+INSERT INTO estado(nome, uf) VALUES("Minas Gerais", "MG");
 INSERT INTO estado(nome, uf) VALUES("Pará", "PA");
 INSERT INTO estado(nome, uf) VALUES("Paraíba", "PB");
 INSERT INTO estado(nome, uf) VALUES("Paraná", "PR");

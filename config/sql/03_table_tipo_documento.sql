@@ -21,4 +21,4 @@ ALTER TABLE tipo_documento MODIFY id INT AUTO_INCREMENT PRIMARY KEY;
 
 INSERT INTO tipo_documento(descricao, numero_documento) VALUES("Nota fiscal", 0);
 INSERT INTO tipo_documento(descricao, numero_documento) VALUES("Recibo", 1);
-
+INSERT INTO tipo_documento(descricao, numero_documento) VALUES("Despesa no exterior", 2);

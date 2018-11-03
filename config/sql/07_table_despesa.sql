@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS despesa;
 
 CREATE TABLE despesa (
 	id INT,
-	descricao VARCHAR(255) NOT NULL,
+	descricao VARCHAR(255),
 	numero_sub_cota INT NOT NULL
 );
 
