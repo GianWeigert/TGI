@@ -12,6 +12,4 @@
 */
 Route::get('/homepage', ['uses' => 'HomeController@homepage']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['uses' => 'ParlamentarController@list']);

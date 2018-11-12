@@ -45,4 +45,5 @@ INSERT INTO estado(nome, uf) VALUES("Roraima", "RR");
 INSERT INTO estado(nome, uf) VALUES("Sergipe", "SE");
 INSERT INTO estado(nome, uf) VALUES("Santa Catarina", "SC");
 INSERT INTO estado(nome, uf) VALUES("São Paulo", "SP");
-INSERT INTO estado(nome, uf) VALUES("Tocantins	", "TO");
+INSERT INTO estado(nome, uf) VALUES("Tocantins  ", "TO");
+INSERT INTO estado(nome, uf) VALUES("Estado não definido", "ND");
