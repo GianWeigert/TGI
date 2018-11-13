@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\ParlamentarRepository")
  * @ORM\Table(name="parlamentar") 
  */ 
-class Estado
+class Parlamentar
 {
     /**
      * @ORM\Id

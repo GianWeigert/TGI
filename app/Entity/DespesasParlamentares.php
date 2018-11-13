@@ -37,22 +37,22 @@ class DespesasParlamentares
     private $dataEmissao;
 
     /**
-     * @Column(name="valor_documento", type="decimal", precision=9, scale=2)
+     * @ORM\Column(name="valor_documento", type="decimal", precision=9, scale=2)
      */
     private $valorDocumento;
 
     /**
-     * @Column(name="valor_glosa", type="decimal", precision=9, scale=2)
+     * @ORM\Column(name="valor_glosa", type="decimal", precision=9, scale=2)
      */
     private $valorGlosa;
     
     /**
-     * @Column(name="valor_liquido", type="decimal", precision=9, scale=2)
+     * @ORM\Column(name="valor_liquido", type="decimal", precision=9, scale=2)
      */
     private $valorLiquido;
 
     /**
-     * @Column(name="valor_restituicao", type="decimal", precision=9, scale=2)
+     * @ORM\Column(name="valor_restituicao", type="decimal", precision=9, scale=2)
      */
     private $valorRestituicao;
 
@@ -156,7 +156,7 @@ class DespesasParlamentares
 
     public function setValorLiquido($valorLiquido)
     {
-        $this->valorLiquido = $valorLiquido
+        $this->valorLiquido = $valorLiquido;
     }
 
     public function getValorRestituicao()
