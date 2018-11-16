@@ -12,4 +12,6 @@
 */
 Route::get('/homepage', ['uses' => 'HomeController@homepage']);
 
+Route::get('/dashboard', ['uses' => 'HomeController@dashboard']);
+
 Route::get('/', ['uses' => 'ParlamentarController@list']);

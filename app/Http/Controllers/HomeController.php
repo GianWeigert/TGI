@@ -15,6 +15,11 @@ class HomeController extends BaseController
         );
     }
 
+    public function dashboard(){
+
+        return view('inicial');
+    }
+
     public function homepage()
     {
         $totalDespesa2009 = $this->despesasParlamentaresRepository->procurarDespessasPorAno(
