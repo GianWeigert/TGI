@@ -17,6 +17,7 @@ class DespesasParlamentaresRepository extends EntityRepository
         $qb = $this->createQueryBuilder('dp')
             ->select('SUM(dp.valorDocumento)')
             ->where('dp.dataEmissao BETWEEN :initDate AND :finalDate')
+            ->andWhere('dp.valorLiquido > 0')
             ->setParameters([
                 'initDate' => $initDate,
                 'finalDate'  => $finalDate

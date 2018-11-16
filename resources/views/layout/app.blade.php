@@ -153,6 +153,7 @@
 	<script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>	
 	<script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<!-- ie8 fixes -->
 	<!--[if lt IE 9]>
 	<script src="assets/js/excanvas.js"></script>

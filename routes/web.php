@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/homepage', ['uses' => 'HomeController@homepage']);
 
-Route::get('/dashboard', ['uses' => 'HomeController@dashboard']);
+Route::get('/dashboard', ['uses' => 'DashboardController@dashboard']);
 
-Route::get('/', ['uses' => 'ParlamentarController@list']);
+Route::get('/', ['uses' => 'DashboardController@dashboard']);
+
+Route::get('/partidos', ['uses' => 'PartidoController@listarPartido']);

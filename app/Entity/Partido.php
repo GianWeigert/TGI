@@ -27,6 +27,11 @@ class Partido
      */
     private $sigla;
 
+    /**
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     */
+    private $image;
+
     public function getId()
     {
         return $this->id;
@@ -50,5 +55,15 @@ class Partido
     public function setSigla($sigla)
     {
         $this->sigla = $sigla;
+    }
+
+        public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 }
