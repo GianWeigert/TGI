@@ -31,7 +31,8 @@
 
                             <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" style="width: 200px; height: 200px;" src="{{ URL::asset($partido['image']) }}" data-holder-rendered="true">
 
-                            <p class="mb-0 class="text-dark""> {{ $partido['nome'] }}</p>
+                            <div class="mb-0 class="text-dark"">Nome: {{ $partido['nome'] }}</div>
+                            <div class="mb-0 class="text-dark"">Quantidade de parlamentares: {{ $partido['quantidadeParlamentares'] }}</div>
                         </div>
                     </div>
                 </a>

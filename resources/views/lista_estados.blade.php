@@ -31,7 +31,8 @@
 
                             <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" style="width: 200px; height: 150px;" src="{{ URL::asset($estado['image']) }}" data-holder-rendered="true">
 
-                            <p class="mb-0 class="text-dark""> {{ $estado['nome'] }}</p>
+                            <div class="mb-0 class="text-dark"">Nome: {{ $estado['nome'] }}</div>
+                            <div class="mb-0 class="text-dark"">Quantidade de parlamentares: {{ $estado['quantidadeParlamentares'] }}</div>
                         </div>
                     </div>
                 </a>

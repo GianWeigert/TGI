@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity\Partido;
+use App\Entity\Parlamentar;
 use Illuminate\Http\Request;
 use Doctrine\ORM\EntityManager;
 use Illuminate\Routing\Controller as BaseController;
@@ -10,11 +11,15 @@ use Illuminate\Routing\Controller as BaseController;
 class PartidoController extends BaseController
 {
     private $partidoRepository;
+    private $parlamentarRepository;
 
     public function __construct(EntityManager $em)
     {
         $this->partidoRepository = $em->getRepository(
             Partido::class
+        );
+        $this->parlamentarRepository = $em->getRepository(
+            Parlamentar::class
         );
     }
 
@@ -23,6 +28,14 @@ class PartidoController extends BaseController
         $pesquisa = $request->query('pesquisa');
 
         $partidos = $this->partidoRepository->listarTodosPartidos($pesquisa);
+
+        foreach ($partidos as $index => $partido) {
+            $quantidadeParlamentares = $this->parlamentarRepository->totalDeParlamentares(
+                ['partido' => $partido['sigla']]
+            );
+
+            $partidos[$index]['quantidadeParlamentares'] = $quantidadeParlamentares;
+        }
 
         $data = [
             'partidos' => $partidos

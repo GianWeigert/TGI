@@ -68,28 +68,25 @@
 				<!-- BEGIN SIDEBAR MENU -->
 				<ul>
 					<li>
-						<a href="/">
-							<i class="icon-home"></i> Menu
+						<a href="{{ route('dashboard') }}" data-toggle="tooltip" title="Dashboard">
+							<i class="icon-th-large"></i> Dashboard
 						</a>					
 					</li>
 					<li class="has-sub">
-						<a href="/partidos" class="">
+						<a href="{{ route('listar.partidos') }}" data-toggle="tooltip" title="Lista de partidos" class="">
 							<i class="icon-group"></i> Partido
-							<span class="arrow"></span>
 						</a>
 					</li>
 					
 					<li class="has-sub">
-						<a href="/parlamentares" class="">
+						<a href="{{ route('listar.parlamentares') }}" data-toggle="tooltip" title="Lista de parlamentares" class="">
 							<i class="icon-user"></i> Parlamentar
-							<span class="arrow"></span>
 						</a>
 					</li>
 
 					<li class="has-sub">
-						<a href="/estados" class="">
-							<i class="icon-user"></i> Estados
-							<span class="arrow"></span>
+						<a href="{{ route('listar.estados') }}" data-toggle="tooltip" title="Lista de estados" class="">
+							<i class="icon-flag"></i> Estados
 						</a>
 					</li>
 					<li>
@@ -128,7 +125,8 @@
 		</div>
 		<!-- END PAGE HEADER-->
 
-	@yield('conteudo')
+		@yield('conteudo')
+	</div>
 
 
 </div>
