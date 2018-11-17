@@ -15,4 +15,8 @@ Route::get('/dashboard', ['uses' => 'DashboardController@dashboard']);
 
 Route::get('/', ['uses' => 'DashboardController@dashboard']);
 
-Route::get('/partidos', ['uses' => 'PartidoController@listarPartido']);
+Route::get('/partidos', ['uses' => 'PartidoController@listarPartidos'])
+        ->name('listar.partidos');
+
+Route::get('/parlamentares', ['uses' => 'ParlamentarController@listarParlamentares'])
+        ->name('listar.parlamentares');

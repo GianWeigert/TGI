@@ -23,6 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap/chosen-bootstrap/chosen/chosen.css" />
 	<link rel="stylesheet" type="text/css" href="bootstrap/uniform/css/uniform.default.css" />
 	<link rel="shortcut icon" href="favicon.ico" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 	<!-- END HEAD -->
 	<!-- BEGIN BODY -->
@@ -153,7 +154,6 @@
 	<script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>	
 	<script type="text/javascript" src="assets/uniform/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<!-- ie8 fixes -->
 	<!--[if lt IE 9]>
 	<script src="assets/js/excanvas.js"></script>

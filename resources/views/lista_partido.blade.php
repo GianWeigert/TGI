@@ -4,28 +4,38 @@
 @section('subTitulo', 'index')
 
 @section('conteudo')
- <div class="container">
-    <div> 
-        <select>
-            
-        </select>
-    </div>
+    <div class="span12"> 
+        <form class="row" action="{{ route('listar.partidos') }}" method="get">
+            <div class="span4">
+                <label for="pesquisa-partido">Pesquisar pelo nome do partido</label>
 
-    @foreach ($data['partidos'] as $partido)
-        <div class="span2">    
-            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-primary">{{ $partido['sigla'] }}</strong>
+                <div>
+                    <input id="pesquisa-partido" type="text" name="pesquisa" value="{{ Request::get('pesquisa') }}
+" />
 
-                    <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" style="width: 200px; height: 200px;" src="{{URL::asset($partido['image'])}}" data-holder-rendered="true">
-
-                    <p class="mb-0">
-                        <a class="text-dark" href="#">{{ $partido['nome'] }}</a>
-                    </p>
-
+                  <button>
+                    <i class="icon-search" aria-hidden="true"></i> Pesquisar
+                  </button>
                 </div>
             </div>
+        </form>
+    </div>
+
+    <div class="span12">
+        <div clas="row">
+            @foreach ($data['partidos'] as $partido)
+                <a class="span2" href="{{ route('listar.parlamentares', ['partido' => $partido['sigla']]) }}">    
+                    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-primary">{{ $partido['sigla'] }}</strong>
+
+                            <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" style="width: 200px; height: 200px;" src="{{ URL::asset($partido['image']) }}" data-holder-rendered="true">
+
+                            <p class="mb-0 class="text-dark""> {{ $partido['nome'] }}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
         </div>
-    @endforeach
-<div>
+    </div>
 @endsection
