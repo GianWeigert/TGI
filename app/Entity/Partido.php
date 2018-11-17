@@ -57,7 +57,7 @@ class Partido
         $this->sigla = $sigla;
     }
 
-        public function getImage()
+    public function getImage()
     {
         return $this->image;
     }

@@ -20,3 +20,6 @@ Route::get('/partidos', ['uses' => 'PartidoController@listarPartidos'])
 
 Route::get('/parlamentares', ['uses' => 'ParlamentarController@listarParlamentares'])
         ->name('listar.parlamentares');
+
+Route::get('/estados', ['uses' => 'EstadoController@listarEstados'])
+        ->name('listar.estados');

@@ -12,7 +12,8 @@ class EstadoRepository extends EntityRepository
 
         $qb ->select('
                 e.nome,
-                e.uf
+                e.uf,
+                e.image
         ');
 
         if (!empty($pesquisa)) {

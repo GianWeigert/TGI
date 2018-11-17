@@ -35,7 +35,7 @@
                 <select id="filtro-estado" name="estado" onchange="this.form.submit();">
                     <option value="">--</option>
                     @foreach ($data['estados'] as $estado)
-                        <option value="{{$estado['uf']}}" @if(Request::get('estado') == $estado['uf']) selected @endif>{{ $estado['uf'] }}</option>
+                        <option value="{{$estado['nome']}}" @if(Request::get('estado') == $estado['nome']) selected @endif>{{ $estado['nome'] }}</option>
                     @endforeach
                 </select>
             </div>

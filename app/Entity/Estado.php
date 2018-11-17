@@ -27,6 +27,11 @@ class Estado
      */
     private $uf;
 
+    /**
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     */
+    private $image;
+
     public function getId()
     {
         return $this->id;
@@ -50,5 +55,15 @@ class Estado
     public function setUf($uf)
     {
         $this->uf = $uf;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 }

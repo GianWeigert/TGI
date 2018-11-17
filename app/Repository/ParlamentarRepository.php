@@ -61,7 +61,7 @@ class ParlamentarRepository extends EntityRepository
         }
 
         if (!empty($parametros['estado'])) {
-            $qb->andWhere('e.uf = :estado');
+            $qb->andWhere('e.nome = :estado');
             $qb->setParameter('estado', $parametros['estado']);
         }
 
