@@ -1,63 +1,59 @@
 @extends('layout.app')
 
-@section('titulo', 'Menu Principal')
-@section('subTitulo', 'index')
+@section('titulo', 'Parlamentares')
+@section('subTitulo', Request::get("estado") == "" ? "Todos os estados" : Request::get("estado"))
 
-@section('conteudo')
-    <div class="span12"> 
-        <form class="row" action="{{ route('listar.parlamentares') }}" method="get">
-            <div class="span4">
-                <label for="pesquisa-partido">Pesquisar pelo nome do parlamentar</label>
-
-                <div>
-                    <input id="pesquisa-partido" type="text" name="pesquisa" value="{{ Request::get('pesquisa') }}
-" />
-
-                    <button>
-                        <i class="icon-search" aria-hidden="true"></i> Pesquisar
-                    </button>
-                </div>
-            </div>
-
-            <div class="span4">
-                <label for="filtro-partido"> Partido </label>
-                <select id="filtro-partido" name="partido" onchange="this.form.submit();">
-                    <option value="">--</option>
+@section('conteudo')    
+    <form class="row my-4" action="{{ route('listar.parlamentares') }}" method="get">                       
+        <div class="col-md-4 col-sm-12">                
+            <label for="filtro-partido"> Partido </label>
+            <div class="form-group">
+                <select id="filtro-partido"  class="form-control"  name="partido" onchange="this.form.submit();">
+                    <option value="">Todos</option>
                     @foreach ($data['partidos'] as $partido)
                         <option value="{{$partido['sigla']}}" @if(Request::get('partido') == $partido['sigla']) selected @endif>{{ $partido['sigla'] }}</option>
                     @endforeach
                 </select>
-            </div>
-
-
-            <div class="span4">
-                <label for="filtro-estado"> Estado </label>
-                <select id="filtro-estado" name="estado" onchange="this.form.submit();">
-                    <option value="">--</option>
+            </div>                
+        </div>        
+        <div class="col-md-4 col-sm-4">
+            <label for="filtro-estado"> Estado </label>
+            <div class="form-group">
+                <select id="filtro-estado"  class="form-control"  name="estado" onchange="this.form.submit();">
+                    <option value="">Todos</option>
                     @foreach ($data['estados'] as $estado)
                         <option value="{{$estado['nome']}}" @if(Request::get('estado') == $estado['nome']) selected @endif>{{ $estado['nome'] }}</option>
                     @endforeach
                 </select>
             </div>
-        </form>
-    </div>
+        </div>        
+        <div class="col-md-4 col-sm-12">
+            <label class="" for="pesquisa-partido ">Pesquisar pelo nome do parlamentar</label>
 
-    <div class="span12">
-        <div clas="row">
-            @foreach ($data['parlamentares'] as $parlamentar)
-                <div class="span3">    
-                    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-                        <div class="card-body d-flex flex-column align-items-start">
-                            <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" style="width: 200px; height: 200px;" src="{{ URL::asset('images/parlamentares/parlamentar_sem_foto.png') }}" data-holder-rendered="true">
-                            
-                            <div class="text-primary"> Número de identificação: {{ $parlamentar['id'] }}</div>
-                            <div class="text-primary"> Nome: {{ $parlamentar['nome'] }}</div>
-                            <div class="text-primary"> Partido: {{ $parlamentar['partido'] }}</div>
-                            <div class="text-primary"> Estado: {{ $parlamentar['estado'] }}</div>
-                        </div>
+            <div class="form-group">    
+                <div class="input-group">    
+                    <input id="pesquisa-partido" class="form-control" type="text" name="pesquisa" value="{{ Request::get('pesquisa') }}"/>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary"
+                            <i class="icon-search" aria-hidden="true"></i> Pesquisar
+                        </button>                    
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
+    </form>            
+
+    <div class="row">        
+        @foreach ($data['parlamentares'] as $parlamentar)        
+            <div class="col-sm-12 col-md-3 card mb-4 shadow-sm py-1">
+                <img class="card-img-top d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" src="{{ URL::asset('images/parlamentares/parlamentar_sem_foto.png') }}" data-holder-rendered="true">
+                <div class="card-body">                    
+                    <div class="text-primary"> Número de identificação: {{ $parlamentar['id'] }}</div>
+                    <div class="text-primary"> Nome: {{ $parlamentar['nome'] }}</div>
+                    <div class="text-primary"> Partido: {{ $parlamentar['partido'] }}</div>
+                    <div class="text-primary"> Estado: {{ $parlamentar['estado'] }}</div>
+                </div>
+            </div>
+        @endforeach        
     </div>
 @endsection

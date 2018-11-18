@@ -1,42 +1,40 @@
 @extends('layout.app')
 
-@section('titulo', 'Menu Principal')
-@section('subTitulo', 'index')
+@section('titulo', 'Busca por Estado')
+@section('subTitulo', 'Escolha um estado')
 
 @section('conteudo')
-    <div class="span12"> 
+    <div class="span12 my-4"> 
         <form class="row" action="{{ route('listar.estados') }}" method="get">
-            <div class="span4">
-                <label for="pesquisa-estado">Pesquisar pelo nome do estado</label>
-
-                <div>
-                    <input id="pesquisa-estado" type="text" name="pesquisa" value="{{ Request::get('pesquisa') }}
+            <div class="col-12 text-center m-4">
+                <div class="d-flex flex-column">
+                    <input class="text-center form-control" placeholder="Buscar" id="pesquisa-estados" type="text" name="pesquisa" value="{{ Request::get('pesquisa') }}
 " />
 
-                  <button>
-                    <i class="icon-search" aria-hidden="true"></i> Pesquisar
+                  <button class="btn mt-auto btn-outline-primary  mb-0">
+                    <i class="icon-search " aria-hidden="true"></i> Pesquisar
                   </button>
                 </div>
             </div>
         </form>
     </div>
 
-    <div class="span12">
-        <div clas="row">
-            @foreach ($data['estados'] as $estado)
-                <a class="span2" href="{{ route('listar.parlamentares', ['estado' => $estado['nome']]) }}">    
-                    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-                        <div class="card-body d-flex flex-column align-items-start">
-                            <strong class="d-inline-block mb-2 text-primary">{{ $estado['uf'] }}</strong>
+    @foreach ($data['estados'] as $estado)
+            <div style="height: 400px; width: 400px;" class="card col-sm-12  col-md-6 col-lg-3 float-left my-3 clearfix" >
+                <div class="card-header">
+                    <h5>{{ $estado['uf'] }}</h5>
+                </div>
+              <div class="card-body d-flex flex-column ">
+                <h4 class="card-title my-1">{{ $estado['nome'] }}</h4>
+                 <img style="width: 200px; height: 150px;" class="card-img flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" src="{{ URL::asset($estado['image']) }}" data-holder-rendered="true">
+                <a class="btn mt-auto btn-outline-primary  mb-0" href="{{ route('listar.parlamentares', ['estado' => $estado['nome']]) }}">Escolher</a>
+              </div>
+            </div>
+    @endforeach
+    
 
-                            <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" style="width: 200px; height: 150px;" src="{{ URL::asset($estado['image']) }}" data-holder-rendered="true">
 
-                            <div class="mb-0 class="text-dark"">Nome: {{ $estado['nome'] }}</div>
-                            <div class="mb-0 class="text-dark"">Quantidade de parlamentares: {{ $estado['quantidadeParlamentares'] }}</div>
-                        </div>
-                    </div>
-                </a>
-            @endforeach
+
         </div>
     </div>
 @endsection
