@@ -21,3 +21,6 @@ Route::get('/parlamentares', ['uses' => 'ParlamentarController@listarParlamentar
 
 Route::get('/estados', ['uses' => 'EstadoController@listarEstados'])
         ->name('listar.estados');
+
+Route::get('/fornecedores', ['uses' => 'FornecedorController@listarFornecedores'])
+        ->name('listar.fornecedores');

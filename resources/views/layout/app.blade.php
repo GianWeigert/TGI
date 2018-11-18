@@ -89,6 +89,13 @@
 							<i class="icon-flag"></i> Estados
 						</a>
 					</li>
+
+					<li class="has-sub">
+						<a href="{{ route('listar.fornecedores') }}" data-toggle="tooltip" title="Lista de estados" class="">
+							<i class="icon-flag"></i> Fornecedores
+						</a>
+					</li>
+
 					<li>
 						<a href="#">
 							<i class="icon-home"></i> Total Geral R$ 

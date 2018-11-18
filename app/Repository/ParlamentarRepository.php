@@ -65,10 +65,7 @@ class ParlamentarRepository extends EntityRepository
             $qb->setParameter('estado', $parametros['estado']);
         }
 
-        $qb->orderBy(
-            $parametros['ordernacao'],
-            $parametros['direcao']
-        );
+        $qb->orderBy($parametros['ordernacao'], $parametros['direcao']);
 
         return $qb->getQuery()->getArrayResult();
     }
