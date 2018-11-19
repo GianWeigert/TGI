@@ -69,4 +69,23 @@ class ParlamentarRepository extends EntityRepository
 
         return $qb->getQuery()->getArrayResult();
     }
+
+    public function procurarParlamentar($id)
+    {
+        $qb = $this->createQueryBuilder('pa');
+
+        $qb->select('
+            pa.id,
+            pa.nome,
+            pa.numeroCadastro,
+            p.sigla as partido,
+            e.nome as estado
+        ')
+        ->innerJoin('pa.partido', 'p')
+        ->innerJoin('pa.estado', 'e')
+        ->where('pa.id = :id')
+        ->setParameter('id', $id);
+
+        return $qb->getQuery()->getSingleResult();
+    }
 }

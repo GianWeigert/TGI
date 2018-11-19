@@ -6,7 +6,9 @@ use App\Entity\Estado;
 use App\Entity\Partido;
 use App\Entity\Parlamentar;
 use Illuminate\Http\Request;
+use App\Components\Pagination;
 use Doctrine\ORM\EntityManager;
+use App\Entity\DespesasParlamentares;
 use Illuminate\Routing\Controller as BaseController;
 
 class ParlamentarController extends BaseController
@@ -26,11 +28,49 @@ class ParlamentarController extends BaseController
         $this->parlamentarRepository = $em->getRepository(
             Parlamentar::class
         );
+        $this->despesasParlamentaresRepository = $em->getRepository(
+            DespesasParlamentares::class
+        );
     }
 
-    public function perfilParlamentar()
+    public function perfilParlamentar(Request $request, $id)
     {
-        return view('perfil_parlamentar');
+        $parametros['pagina'] = $request->query('pagina', 1);
+        $parametros['limite'] = $request->query('limite', 20);
+        $parametros['direcao'] = $request->query('direcao', 'desc');
+        $parametros['ordernacao'] = $request->query('ordenacao', 'dp.dataEmissao');
+        $parametros['parlamentarId'] = $id;
+
+        $parlamentar = $this->parlamentarRepository->procurarParlamentar($id);
+
+        $maiorDespesa = $this->despesasParlamentaresRepository->listarMaiorDespesaParlamentar(
+            $id
+        );
+
+        $despesas = $this->despesasParlamentaresRepository->listarTodasDespesas(
+            $parametros
+        );
+
+        $quantidadeDespesas = $this->despesasParlamentaresRepository->quantidadeDespesas(
+            $parametros
+        );
+
+        $pagination = Pagination::execute(
+            $quantidadeDespesas,
+            $parametros['limite'],
+            $parametros['pagina']
+        );
+
+        $data = [
+            'parlamentar'  => $parlamentar,
+            'maiorDespesa' => $maiorDespesa,
+            'despesas'  => $despesas,
+            'pagination' => $pagination
+        ];
+
+        return view('perfil_parlamentar', [
+            'data' => $data
+        ]);
     }
 
     public function listarParlamentares(Request $request)

@@ -12,7 +12,7 @@
     <title>CGP - @yield('titulo')</title>
     
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">   
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
       .card:hover{
         background-color:rgba(0,0,0,.03);

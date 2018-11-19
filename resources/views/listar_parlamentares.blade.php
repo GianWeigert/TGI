@@ -55,7 +55,7 @@
                     <div class="text-dark "> Partido: {{ $parlamentar['partido'] }}</div>
                     <div class="text-dark "> Estado: {{ $parlamentar['estado'] }}</div>
                 </div>
-                <a class="btn btn-block rounded-0 btn-primary mb-0" href="">Escolher</a>
+                <a class="btn btn-block rounded-0 btn-primary mb-0" href="{{ route('perfil.parlamentar', ['id' => $parlamentar['id']]) }}">Escolher</a>
             </div>
         @endforeach        
     </div>

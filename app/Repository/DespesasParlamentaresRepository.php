@@ -27,4 +27,70 @@ class DespesasParlamentaresRepository extends EntityRepository
 
         return $qb;
     }
+
+    public function listarMaiorDespesaParlamentar($parlamentarId)
+    {
+        $qb = $this->createQueryBuilder('dp');
+
+        $qb->select('
+            dp.valorLiquido,
+            dp.dataEmissao,
+            d.descricao AS despesa,
+            f.nome AS fornecedor
+        ')
+        ->innerJoin('dp.despesa', 'd')
+        ->innerJoin('dp.fornecedor', 'f')
+        ->innerJoin('dp.parlamentar', 'pa')
+        ->where('pa.id = :parlamentarId')
+        ->setParameters([
+            'parlamentarId' => $parlamentarId
+        ])
+        ->setMaxResults(1)
+        ->orderBy('dp.valorLiquido', 'desc');
+
+        return $qb->getQuery()->getSingleResult();
+    }
+
+    public function listarTodasDespesas($parametros)
+    {
+        $primeiroResultado =($parametros['pagina'] - 1) * $parametros['limite'];
+
+        $qb = $this->createQueryBuilder('dp');
+
+        $qb->select('
+            dp.valorLiquido,
+            dp.dataEmissao,
+            d.descricao,
+            f.nome AS fornecedor
+        ')
+        ->innerJoin('dp.despesa', 'd')
+        ->innerJoin('dp.fornecedor', 'f')
+        ->innerJoin('dp.parlamentar', 'pa')
+        ->where('dp.valorLiquido > 0')
+        ->setFirstResult($primeiroResultado)
+        ->setMaxResults($parametros['limite']);
+
+        if (!empty($parametros['parlamentarId'])) {
+            $qb->andWhere('pa.id = :parlamentarId');
+            $qb->setParameter('parlamentarId', $parametros['parlamentarId']);
+        }
+
+        return $qb->getQuery()->getArrayResult();
+    }
+
+    public function quantidadeDespesas($parametros)
+    {
+        $qb = $this->createQueryBuilder('dp');
+
+        $qb->select('COUNT(dp.id)')
+        ->where('dp.valorLiquido > 0')
+        ->innerJoin('dp.parlamentar', 'pa');
+
+        if (!empty($parametros['parlamentarId'])) {
+            $qb->andWhere('pa.id = :parlamentarId');
+            $qb->setParameter('parlamentarId', $parametros['parlamentarId']);
+        }
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

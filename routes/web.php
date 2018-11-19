@@ -19,8 +19,8 @@ Route::get('/partidos', ['uses' => 'PartidoController@listarPartidos'])
 Route::get('/parlamentares', ['uses' => 'ParlamentarController@listarParlamentares'])
         ->name('listar.parlamentares');
 
-Route::get('/perfil-parlamentar', ['uses' => 'ParlamentarController@perfilParlamentar'])
-->name('perfil.parlamentar');
+Route::get('/perfil-parlamentar/{id}', ['uses' => 'ParlamentarController@perfilParlamentar'])
+        ->name('perfil.parlamentar');
 
 Route::get('/estados', ['uses' => 'EstadoController@listarEstados'])
         ->name('listar.estados');
