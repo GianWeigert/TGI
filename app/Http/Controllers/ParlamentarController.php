@@ -28,6 +28,11 @@ class ParlamentarController extends BaseController
         );
     }
 
+    public function perfilParlamentar()
+    {
+        return view('perfil_parlamentar');
+    }
+
     public function listarParlamentares(Request $request)
     {
         $parametros['partido'] = $request->query('partido', '');

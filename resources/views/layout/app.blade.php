@@ -7,10 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
     <title>CGP - @yield('titulo')</title>
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">   
+    <style type="text/css">
+      .card:hover{
+        background-color:rgba(0,0,0,.03);
+      }
+    </style>
 
   </head>
 
@@ -26,19 +33,22 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home
+              <a class="nav-link" href="{{ route('dashboard') }}" data-toggle="tooltip" title="Dashboard">Home
 
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/partidos">Partido</a>
+              <a class="nav-link" href="{{ route('listar.partidos') }}" data-toggle="tooltip" title="Lista de partidos">Partido</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/parlamentares">Parlamentar</a>
+              <a class="nav-link" href="{{ route('listar.parlamentares') }}" data-toggle="tooltip" title="Lista de parlamentares">Parlamentar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/estados">Estado</a>
+              <a class="nav-link" href="{{ route('listar.estados') }}" data-toggle="tooltip" title="Lista de estados">Estado</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('listar.fornecedores') }}" data-toggle="tooltip" title="Lista de estados">Fornecedores</a>
             </li>
           </ul>
         </div>
@@ -49,23 +59,26 @@
     <div class="container">
       <div class="row">        
           <div class="mt-5 col-md-12 col-sm-12 text-center">
-            <h1 class="display-3"> @yield('titulo')</h1>
+            <h1 class="display-4"> @yield('titulo')</h1>
             <h1 class="display-4"> @yield('subTitulo')</h1>
           </div>
       </div>             
       @yield('conteudo')        
     </div>
-
+    <br><br><br><br>
     <!-- Bootstrap core JavaScript -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 
-	<div class="footer">
-		2013 &copy; Metronic by keenthemes.
-		<div class="span pull-right">
-			<span class="go-top"><i class="icon-angle-up"></i></span>
-		</div>
-	</div>
+  <footer class="text-muted mt-5">
+      <div class="container">
+        <hr class="my-4">
+        <p class="float-right">
+          <a href="#">Voltar ao topo</a>
+        </p>
+        <p>&reg; copyright 2018 Consulta de Gastos Públicos</p>
+      </div>
+    </footer>
   </body>
 
 
