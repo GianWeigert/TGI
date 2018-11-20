@@ -105,4 +105,8 @@ class ParlamentarController extends BaseController
             'data' => $data
         ]);
     }
+
+    public function estatisticaParlamentar(){
+        return view('estatisticas_parlamentares');
+    }
 }
