@@ -11,7 +11,7 @@
                 <label  for="pesquisa-fornecedor-cnpj">CNPJ</label>
                 <div class="form-group">    
                     <div class="input-group">    
-                        <input id="pesquisa-fornecedo-cnpj" class="form-control" placeholder="Buscar" type="text" name="pesquisa" value="{{ Request::get('pesquisa') }}"/>
+                        <input id="pesquisa-fornecedo-cnpj" class="form-control" placeholder="Buscar" type="text" name="cnpj" value="{{ Request::get('cnpj') }}"/>
                     </div>
                 </div>
             </div>
@@ -28,8 +28,6 @@
                     </div>
                 </div>
             </div>    
-
-
         </form>
     </div>
 
@@ -55,4 +53,5 @@
         @endforeach
     </table>
 
+    @include('layout.pagination', ['pagination' => $data['pagination']])
 @endsection
