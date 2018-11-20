@@ -89,6 +89,6 @@
       </table>
     </div>
 
-    @include('layout.pagination')
+    @include('layout.pagination', ['pagination' => $data['pagination']])
 	</div>
 @endsection

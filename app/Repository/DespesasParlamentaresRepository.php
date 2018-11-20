@@ -75,6 +75,8 @@ class DespesasParlamentaresRepository extends EntityRepository
             $qb->setParameter('parlamentarId', $parametros['parlamentarId']);
         }
 
+        $qb->orderBy($parametros['ordernacao'], $parametros['direcao']);
+
         return $qb->getQuery()->getArrayResult();
     }
 
@@ -90,6 +92,8 @@ class DespesasParlamentaresRepository extends EntityRepository
             $qb->andWhere('pa.id = :parlamentarId');
             $qb->setParameter('parlamentarId', $parametros['parlamentarId']);
         }
+
+        $qb->orderBy($parametros['ordernacao'], $parametros['direcao']);
 
         return $qb->getQuery()->getSingleScalarResult();
     }
