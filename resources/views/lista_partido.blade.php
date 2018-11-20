@@ -13,7 +13,7 @@
                         <input class="form-control" placeholder="Buscar" id="pesquisa-partido" type="text" name="pesquisa" value="{{ Request::get('pesquisa') }}" />
                         <div class="input-group-append">
                           <button class="btn mt-auto btn-primary  mb-0">
-                            <i class="icon-search " aria-hidden="true"></i> Pesquisar
+                            Pesquisar
                           </button>                            
                         </div>
                       </div>

@@ -15,7 +15,7 @@
           <img class="card-img img-thumbnail" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" src="{{ URL::asset('images/parlamentares/parlamentar_sem_foto.png') }}" data-holder-rendered="true">
         </div>
 
-        <div class="card-subtitle col-lg-3 col-sm-12 col-md-2">
+        <div class="card-subtitle col-lg-2 col-sm-12 col-md-2">
 
           <h5> Partido: </h5>
 
@@ -29,7 +29,7 @@
           </p>
         </div>
 
-        <div class="card-subtitle col-lg-3 col-sm-12 col-md-3 ">
+        <div class="card-subtitle col-lg-2 col-sm-12 col-md-2 ">
 
           <h5> Maior gasto: </h5>
 
@@ -44,7 +44,7 @@
 
         </div>
 
-        <div class="card-subtitle col-lg-3 col-sm-12 col-md-3 ">
+        <div class="card-subtitle col-lg-5 col-sm-12 col-md-5 ">
 
           <h5> Descrição gasto: </h5>
 
@@ -65,30 +65,34 @@
         </div>
       </div>
 
-    <div class="row mt-3">
-      <table class="table  table-striped col-lg-12 col-md-12 col-sm-12 float-right">
-        <thead class="bg-primary text-light">
-          <tr>
-            <th scope="col">Tipo</th>
-            <th scope="col">Fornecedor</th>
-            <th scope="col">Data</th>
-            <th scope="col">Valor </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          @foreach ($data['despesas'] as $despesa)
+    <div class="row">
+      <div class="table-responsive">
+        
+        <table class="table table-striped col-sm-12">
+          <thead class=" bg-primary text-light">
             <tr>
-              <td>{{ $despesa['descricao'] }}</td>
-              <td>{{ $despesa['fornecedor'] }}</td>
-              <th>{!! $despesa['dataEmissao']->format('d/m/Y') !!}</th>
-              <th scope="row">R$ {!! str_replace('.', ',', $despesa['valorLiquido']) !!}</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Fornecedor</th>
+              <th scope="col">Data</th>
+              <th scope="col">Valor </th>
             </tr>
-          @endforeach
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody class="font-style text-truncate">
+            @foreach ($data['despesas'] as $despesa)
+              <tr class="">
+                <td scope="row">{{ $despesa['descricao'] }}</td>
+                <td scope="row">{{ $despesa['fornecedor'] }}</td>
+                <td scope="row">{!! $despesa['dataEmissao']->format('d/m/Y') !!}</td>
+                <td scope="row">R$ {!! str_replace('.', ',', $despesa['valorLiquido']) !!}</td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+ 
     </div>
 
     @include('layout.pagination', ['pagination' => $data['pagination']])
-	</div>
+  </div>
 @endsection

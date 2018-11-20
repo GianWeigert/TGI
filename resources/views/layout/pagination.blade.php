@@ -3,7 +3,7 @@
     <ul class="pagination justify-content-center">
 
       <li class="page-item @if($pagination['paginaAtual'] == 1) disabled @endif">
-        <a class="page-link" href="{{ Request::fullUrlWithQuery(['pagina' => ($pagination['paginaAtual'] - 1)]) }}">Anterior</a>
+        <a class="page-link" href="{{ Request::fullUrlWithQuery(['pagina' => 1]) }}">Primeira</a>
       </li>
 
       @if($pagination['paginaAtual'] == 1)
@@ -29,7 +29,7 @@
       @endfor
 
       <li class="page-item @if($pagination['paginaAtual'] == $pagination['totalPaginas']) disabled @endif">
-        <a class="page-link" href="{{ Request::fullUrlWithQuery(['pagina' => ($pagination['paginaAtual'] + 1)]) }}">Próximo</a>
+        <a class="page-link" href="{{ Request::fullUrlWithQuery(['pagina' => ($pagination['totalPaginas'])]) }}">Ultima</a>
       </li>
     </ul>
   </nav>

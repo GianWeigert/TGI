@@ -17,6 +17,12 @@
       .card:hover{
         background-color:rgba(0,0,0,.03);
       }
+      .font-style{
+        font-family: "Arial", Sans-serif;
+        font-style: normal;
+        font-size: 0.775em;
+
+      }
     </style>
 
   </head>
@@ -34,8 +40,6 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link" href="{{ route('dashboard') }}" data-toggle="tooltip" title="Dashboard">Home
-
-                <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
