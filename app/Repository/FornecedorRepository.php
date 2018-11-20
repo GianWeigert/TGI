@@ -53,7 +53,7 @@ class FornecedorRepository extends EntityRepository
             ->setParameter('cnpj', $parametros['cnpj']);
         }
 
-        $qb->orderBy($parametros['ordernacao'], $parametros['direcao']);
+        $qb->orderBy($parametros['ordenacao'], $parametros['direcao']);
 
         return $qb->getQuery()->getArrayResult();
     }

@@ -24,7 +24,7 @@ class FornecedorController extends BaseController
         $parametros['pagina'] = $request->query('pagina', 1);
         $parametros['limite'] = $request->query('limite', 40);
         $parametros['direcao'] = $request->query('direcao', 'asc');
-        $parametros['ordernacao'] = $request->query('ordenacao', 'f.nome');
+        $parametros['ordenacao'] = $request->query('ordenacao', 'f.nome');
         $parametros['pesquisa'] = $request->query('pesquisa', '');
         $parametros['cnpj'] = $request->query('cnpj', '');
 

@@ -4,7 +4,7 @@
 @section('subTitulo', 'Escolha um partido')
 
 @section('conteudo')
-    <form class="row my-4" action="{{ route('listar.estados') }}" method="get">
+    <form class="row my-4" action="{{ route('listar.partidos') }}" method="get">
         <div class="col-md-8 hidden-xs"></div>
         <div class="col-md-4 col-sm-12 text-center">
             <div class="d-flex flex-column">              
@@ -23,6 +23,7 @@
     </form>
     
     <div class="row">
+      @if(!empty($data['partidos']))
         @foreach ($data['partidos'] as $partido)
             <div class="card col-sm-12  col-md-3 my-3 p-0" >
                 <div class="card-header">
@@ -35,6 +36,11 @@
               </div>
               <a class="btn btn-block rounded-0 btn-primary mb-0 rou" href="{{ route('listar.parlamentares', ['partido' => $partido['sigla']]) }}">Escolher</a>
             </div>
-        @endforeach            
+        @endforeach
+
+        @include('layout.pagination', ['pagination' => $data['pagination']])
+      @else
+        <p> Nenhum partido encontrado!</p>
+      @endIf
     </div>    
 @endsection

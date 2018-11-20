@@ -38,7 +38,7 @@ class ParlamentarController extends BaseController
         $parametros['pagina'] = $request->query('pagina', 1);
         $parametros['limite'] = $request->query('limite', 20);
         $parametros['direcao'] = $request->query('direcao', 'desc');
-        $parametros['ordernacao'] = $request->query('ordenacao', 'dp.dataEmissao');
+        $parametros['ordenacao'] = $request->query('ordenacao', 'dp.dataEmissao');
         $parametros['parlamentarId'] = $id;
 
         $parlamentar = $this->parlamentarRepository->procurarParlamentar($id);
