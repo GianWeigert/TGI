@@ -42,5 +42,5 @@
       @else
         <p> Nenhum partido encontrado!</p>
       @endIf
-    </div>    
+    </div>
 @endsection

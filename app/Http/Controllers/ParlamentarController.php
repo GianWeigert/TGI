@@ -91,14 +91,33 @@ class ParlamentarController extends BaseController
             $parametros
         );
 
-        $partidos = $this->partidoRepository->listarTodosPartidos('');
+        $partidos = $this->partidoRepository->listarTodosPartidos([
+            'pagina' => 1,
+            'limite' => 100,
+            'ordenacao' => 'p.sigla',
+            'direcao' => 'asc',
+            'pesquisa' => ''
+        ]);
 
-        $estados = $this->estadoRepository->listarTodosEstados('');
+        $estados = $this->estadoRepository->listarTodosEstados([
+            'pagina' => 1,
+            'limite' => 100,
+            'ordenacao' => 'e.nome',
+            'direcao' => 'asc',
+            'pesquisa' => ''
+        ]);
+
+        $pagination = Pagination::execute(
+            $totalDeParlamentares,
+            $parametros['limite'],
+            $parametros['pagina']
+        );
 
         $data = [
             'parlamentares' => $parlamentares,
             'partidos' => $partidos,
-            'estados' => $estados
+            'estados' => $estados,
+            'pagination' => $pagination
         ];
 
         return view('listar_parlamentares', [

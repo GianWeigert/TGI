@@ -42,21 +42,26 @@
         </div>
     </form>            
 
-    <div class="row">        
-        @foreach ($data['parlamentares'] as $parlamentar)        
-            <div class="card col-sm-12 col-md-3 my-3 px-0">
-                <div class="card-header">
-                    
-                    <img class="card-img img-thumbnail " data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" src="{{ URL::asset('images/parlamentares/parlamentar_sem_foto.png') }}" data-holder-rendered="true">
+    <div class="row">
+        @if(!empty($data['parlamentares']))
+            @foreach ($data['parlamentares'] as $parlamentar)
+                <div class="card col-sm-12 col-md-3 my-3 px-0">
+                    <div class="card-header">
+                        <img class="card-img img-thumbnail " data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" src="{{ URL::asset('images/parlamentares/parlamentar_sem_foto.png') }}" data-holder-rendered="true">
+                    </div>
+                    <div class="card-body">
+                        <div class="text-dark"> Número de identificação: {{ $parlamentar['id'] }}</div>
+                        <div class="text-dark "> Nome: {{ $parlamentar['nome'] }}</div>
+                        <div class="text-dark "> Partido: {{ $parlamentar['partido'] }}</div>
+                        <div class="text-dark "> Estado: {{ $parlamentar['estado'] }}</div>
+                    </div>
+                    <a class="btn btn-block rounded-0 btn-primary mb-0" href="{{ route('perfil.parlamentar', ['id' => $parlamentar['id']]) }}">Escolher</a>
                 </div>
-                <div class="card-body">                    
-                    <div class="text-dark"> Número de identificação: {{ $parlamentar['id'] }}</div>
-                    <div class="text-dark "> Nome: {{ $parlamentar['nome'] }}</div>
-                    <div class="text-dark "> Partido: {{ $parlamentar['partido'] }}</div>
-                    <div class="text-dark "> Estado: {{ $parlamentar['estado'] }}</div>
-                </div>
-                <a class="btn btn-block rounded-0 btn-primary mb-0" href="{{ route('perfil.parlamentar', ['id' => $parlamentar['id']]) }}">Escolher</a>
-            </div>
-        @endforeach        
+            @endforeach
+
+            @include('layout.pagination', ['pagination' => $data['pagination']])
+        @else
+            <p> Nenhum parlamentar encontrado!</p>
+        @endIf
     </div>
 @endsection
