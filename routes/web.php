@@ -33,3 +33,6 @@ Route::get('/estados', ['uses' => 'EstadoController@listarEstados'])
 
 Route::get('/fornecedores', ['uses' => 'FornecedorController@listarFornecedores'])
         ->name('listar.fornecedores');
+
+Route::get('/sobre', ['uses' => 'DashboardController@sobre'])
+        ->name('sobre');

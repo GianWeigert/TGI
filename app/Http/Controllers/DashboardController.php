@@ -17,6 +17,10 @@ class DashboardController extends BaseController
         );
     }
 
+    public function sobre(){
+        return view('sobre');
+    }
+
     public function dashboard()
     {
         /*

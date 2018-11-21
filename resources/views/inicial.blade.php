@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('titulo', 'Menu Principal')
-@section('subTitulo', 'index')
+
 
 @section('conteudo')
 	<!-- BEGIN PAGE CONTENT-->

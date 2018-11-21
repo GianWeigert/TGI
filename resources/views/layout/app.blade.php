@@ -54,6 +54,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('listar.fornecedores') }}" data-toggle="tooltip" title="Lista de estados">Fornecedores</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('sobre') }}" data-toggle="tooltip" title="Sobre nós">Sobre</a>
+            </li>
           </ul>
         </div>
       </div>
