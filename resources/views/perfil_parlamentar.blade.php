@@ -17,7 +17,6 @@
         </div>
 
         <div class="card-subtitle col-lg-2 col-sm-12 col-md-2">
-
           <h5> Partido: </h5>
 
           <p>
@@ -31,7 +30,6 @@
         </div>
 
         <div class="card-subtitle col-lg-2 col-sm-12 col-md-2 ">
-
           <h5> Maior gasto: </h5>
 
           <p>
@@ -40,24 +38,26 @@
           <h5> Data: </h5>
 
           <p>
-             {!! $data['maiorDespesa']['dataEmissao']->format('d/m/Y') !!}
+            {!! $data['maiorDespesa']['dataEmissao']->format('d/m/Y') !!}
           </p>
-
         </div>
 
         <div class="card-subtitle col-lg-5 col-sm-12 col-md-5 ">
-
           <h5> Descrição gasto: </h5>
 
           <p>
-             {{ $data['maiorDespesa']['despesa'] }}
+            {{ $data['maiorDespesa']['despesa'] }}
           </p>
+
           <h5> Fornecedor: </h5>
 
           <p>
-             {{ $data['maiorDespesa']['fornecedor'] }}
+            {{ $data['maiorDespesa']['fornecedor'] }}
           </p>
 
+          <a href="{{ route('estatistica.parlamentar', ['id' => $data['parlamentar']['id']]) }}"> Estatística
+            <i class="glyphicon glyphicon-new-window" />
+          </a>
         </div>
       </div>
       <div class="row">

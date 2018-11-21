@@ -125,7 +125,16 @@ class ParlamentarController extends BaseController
         ]);
     }
 
-    public function estatisticaParlamentar(){
-        return view('estatisticas_parlamentares');
+    public function estatisticaParlamentar($id)
+    {
+        $parlamentar = $this->parlamentarRepository->procurarParlamentar($id);
+
+        $data = [
+            'parlamentar' => $parlamentar
+        ];
+
+        return view('estatisticas_parlamentar', [
+            'data' => $data
+        ]);
     }
 }

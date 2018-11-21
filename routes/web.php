@@ -25,7 +25,7 @@ Route::get('/parlamentares', ['uses' => 'ParlamentarController@listarParlamentar
 Route::get('/perfil-parlamentar/{id}', ['uses' => 'ParlamentarController@perfilParlamentar'])
         ->name('perfil.parlamentar');
 
-Route::get('/estatistica-parlamentar', ['uses' => 'ParlamentarController@estatisticaParlamentar'])
+Route::get('/estatistica-parlamentar/{id}', ['uses' => 'ParlamentarController@estatisticaParlamentar'])
         ->name('estatistica.parlamentar');
 
 Route::get('/estados', ['uses' => 'EstadoController@listarEstados'])
