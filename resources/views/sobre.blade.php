@@ -9,8 +9,11 @@
 		<div class="span12">
 			<!-- BEGIN EXAMPLE TABLE PORTLET-->
 			<h1 class="display-3 text-center">Sobre nós</h1>
-			<br><br><br> 	
-			<h1 class="display-4 text-center"> Integrantes do grupo</h1>
+			<br><br><br>
+			<p class="lead text-justify mb-5">
+				Somos uma empresa com o objetivo de extrair, carregar e transformar as informações obtidas pelo site do governo, afim de melhorar a compreensão de dados acessíveis a todos, porém dificultoso para a assimilação de vários indivíduos da nossa população. Focando sempre na organização e na transformação do dificultoso em facilidade.
+			</p> 	
+			<h1 class="display-4 text-center mb-5"> Integrantes do grupo</h1>
 			<div class="mb-5">
 				<h1 class="text-center">Antonio Felix </h1>
 				<h1 class="text-center">Bárbara Luiza</h1>
@@ -21,7 +24,7 @@
 
 
 			</div>
-			<h1 class="display-4 text-center  mb-5">Descrição do Problema</h1>
+			<h1 class="display-4 text-center  mb-5">Problema das informação antigas</h1>
 			<p class="lead text-justify">
 				As plataformas que contém informações dos funcionários públicos estão
 				espalhadas pelas redes. A organização e o fácil entendimento para que o publicou
