@@ -1,7 +1,9 @@
 @extends('layout.app')
 
 @section('titulo', 'Fornecedores')
-@section('subTitulo', '')
+@section('msgTop', 'Lista de Fornecedores')
+@section('msgTop2', '')
+
 
 @section('conteudo')
     <div class="span12"> 

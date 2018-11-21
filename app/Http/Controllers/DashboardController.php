@@ -19,6 +19,7 @@ class DashboardController extends BaseController
 
     public function dashboard()
     {
+        /*
         $totalDespesa2009 = $this->despesasParlamentaresRepository->procurarDespessasPorAno(
             '2009'
         );
@@ -86,9 +87,7 @@ class DashboardController extends BaseController
         $data = [
             'totais' => $totais
         ];
-
-		return view('inicial', [
-			'data' => $data
-		]);
+        */
+		return view('inicial');
 	}
 }

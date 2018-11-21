@@ -63,8 +63,8 @@
     <div class="container">
       <div class="row">        
           <div class="mt-5 col-md-12 col-sm-12 text-center">
-            <h1 class="display-4"> @yield('titulo')</h1>
-            <h1 class="display-4"> @yield('subTitulo')</h1>
+            <h1 class="display-4"> @yield('msgTop')</h1>
+            <h1 class="display-4"> @yield('msgTop2')</h1>
           </div>
       </div>             
       @yield('conteudo')        

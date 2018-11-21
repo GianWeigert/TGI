@@ -1,7 +1,9 @@
 @extends('layout.app')
 
 @section('titulo', 'Parlamentares')
-@section('subTitulo', Request::get("estado") == "" ? "Todos os estados" : Request::get("estado"))
+@section('msgTop', 'Busca por parlamentares')
+@section('msgTop2', Request::get("estado") == "" ? "Todos os estados" : Request::get("estado"))
+
 
 @section('conteudo')    
     <form class="row my-4" action="{{ route('listar.parlamentares') }}" method="get">                       

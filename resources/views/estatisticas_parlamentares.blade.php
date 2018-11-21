@@ -1,7 +1,8 @@
 @extends('layout.app')
 
-@section('titulo', 'Estatisticas Parlamentares')
-@section('subTitulo', 'Escolha um estado')
+@section('titulo', 'Estatistica Parlamentar')
+@section('msgTop', 'Estatistica  Parlamentar')
+@section('msgTop2', Request::get("ano") == "" ? "" : 'Ano de '. Request::get("ano"))
 
 @section('conteudo')  
 	<div class="row  mt-5">

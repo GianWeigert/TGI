@@ -60,4 +60,8 @@ class PartidoController extends BaseController
             'data' => $data
         ]);
     }
+
+    public function perfilPartido(){
+        return view('perfil_partido');
+    }
 }

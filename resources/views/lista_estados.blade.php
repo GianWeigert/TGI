@@ -1,7 +1,8 @@
 @extends('layout.app')
 
 @section('titulo', 'Busca por Estado')
-@section('subTitulo', 'Escolha um estado')
+@section('msgTop', 'Escolha um estado')
+@section('msgTop2', '')
 
 @section('conteudo')    
     <form class="row my-4" action="{{ route('listar.estados') }}" method="get">

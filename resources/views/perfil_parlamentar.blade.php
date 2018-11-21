@@ -1,7 +1,8 @@
 @extends('layout.app')
 
 @section('titulo', 'Perfil')
-@section('subTitulo', '')
+@section('msgTop', 'Perfil do Parlamentar')
+@section('msgTop2', '')
 
 @section('conteudo')
   <div class="card text-justify mt-5">
@@ -36,7 +37,7 @@
           <p>
             R$ {!! str_replace('.', ',', $data['maiorDespesa']['valorLiquido']) !!}
           </p>
-          <h5> Data : </h5>
+          <h5> Data: </h5>
 
           <p>
              {!! $data['maiorDespesa']['dataEmissao']->format('d/m/Y') !!}
@@ -51,7 +52,7 @@
           <p>
              {{ $data['maiorDespesa']['despesa'] }}
           </p>
-          <h5> Fornecedor </h5>
+          <h5> Fornecedor: </h5>
 
           <p>
              {{ $data['maiorDespesa']['fornecedor'] }}

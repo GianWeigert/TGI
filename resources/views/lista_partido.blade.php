@@ -1,7 +1,8 @@
 @extends('layout.app')
 
-@section('titulo', ' Partidos')
-@section('subTitulo', 'Escolha um partido')
+@section('titulo', 'Partidos')
+@section('msgTop', 'Escolha um partido')
+@section('msgTop2', '')
 
 @section('conteudo')
     <form class="row my-4" action="{{ route('listar.partidos') }}" method="get">
