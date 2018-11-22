@@ -125,12 +125,59 @@ class ParlamentarController extends BaseController
         ]);
     }
 
-    public function estatisticaParlamentar($id)
+    public function estatisticaParlamentar(Request $request, $id)
     {
         $parlamentar = $this->parlamentarRepository->procurarParlamentar($id);
+        $ano = $request->query('ano', 2009);
+        $meses30dias = [4, 6, 9, 11];
+        $totalGastoMes = [];
+        $totalGastoAno = 0;
+
+        for ($mes = 1; $mes <= 12; $mes ++) {
+            $dataInicial = $ano . '-' . $mes . '-01';
+            $dataInicial = new \DateTime($dataInicial);
+
+            if ($mes == 2) {
+                $dataFinal = $ano . '-' . $mes . '-27';
+
+                if ($ano % 4 == 0) {
+                    $dataFinal = $ano . '-' . $mes . '-28';
+                }
+            } else if (in_array($mes, $meses30dias)) {
+                $dataFinal = $ano . '-' . $mes . '-30';
+            } else {
+                $dataFinal = $ano . '-' . $mes . '-31';
+            }
+            $dataFinal = new \DateTime($dataFinal);
+
+            $totalGastoMes[$mes] = $this->despesasParlamentaresRepository->procurarValorDespesaPorData(
+                $dataInicial,
+                $dataFinal,
+                ['parlamentarId' => $id]
+            );
+
+            $totalGastoAno = $totalGastoAno + $totalGastoMes[$mes];
+        }
+
+        $despesas = $this->despesasParlamentaresRepository->obterGastosPorDespesa([
+            'parlamentarId' => $id,
+            'ano' => $ano
+        ]);
+
+        $despesaTotal = 0;
+        foreach ($despesas as $index => $despesa) {
+            $despesas['porcentagem'][] =  (($despesa['valorLiquido'] * 100) / $totalGastoAno);
+            $despesas['descricao'][] =  'abc';
+        }
+
+        $despesas['porcentagem'] = json_encode($despesas['porcentagem']);
+        $despesas['descricao'] = json_encode($despesas['descricao']);
 
         $data = [
-            'parlamentar' => $parlamentar
+            'parlamentar' => $parlamentar,
+            'totalGastoAno' => $totalGastoAno,
+            'totalGastoMes' => $totalGastoMes,
+            'gastoPorDespesa' => $despesas
         ];
 
         return view('estatisticas_parlamentar', [

@@ -20,12 +20,13 @@
           <h5> Partido: </h5>
 
           <p>
-             {{ $data['parlamentar']['partido'] }}
+            {{ $data['parlamentar']['partido'] }}
           </p>
+
           <h5> Estado: </h5>
 
           <p>
-             {{ $data['parlamentar']['estado'] }}
+            {{ $data['parlamentar']['estado'] }}
           </p>
         </div>
 
@@ -55,7 +56,7 @@
             {{ $data['maiorDespesa']['fornecedor'] }}
           </p>
 
-          <a href="{{ route('estatistica.parlamentar', ['id' => $data['parlamentar']['id']]) }}"> Estatística
+          <a href="{{ route('estatistica.parlamentar', ['id' => $data['parlamentar']['id'], 'ano' => 2009]) }}"> Estatística
             <i class="glyphicon glyphicon-new-window" />
           </a>
         </div>
