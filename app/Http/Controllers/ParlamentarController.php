@@ -183,12 +183,10 @@ class ParlamentarController extends BaseController
         ]);
 
         foreach ($despesas as $index => $despesa) {
-            $despesas['porcentagem'][] =  (($despesa['valorLiquido'] * 100) / $totalGastoAno);
-            $despesas['descricao'][] =  'abc';
+            $porcentagem = (($despesa['valorLiquido'] * 100) / $totalGastoAno);
+            $despesas['porcentagem'][] =  number_format($porcentagem, 2, '.', ',');
+            $despesas['descricao'][] =  $despesa['descricao'];
         }
-
-        $despesas['porcentagem'] = json_encode($despesas['porcentagem']);
-        $despesas['descricao'] = json_encode($despesas['descricao']);
 
         $fornecedores = $this->despesasParlamentaresRepository->obterFornecedoresMaiorGasto([
             'parlamentarId' => $id,

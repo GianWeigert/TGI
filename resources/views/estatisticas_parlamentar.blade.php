@@ -39,13 +39,13 @@
       <hr>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
       <h1 class="display-4 text-center">Gastos mensais</h1>
 
       <canvas id="gasto-mensal"  width="500" height="250"></canvas>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
       <h1 class="display-4 text-center">Despesas</h1>
 
       <canvas id="pizza"></canvas>
@@ -114,15 +114,31 @@
   </div>
 
   <script>
+    var legendas = {!! json_encode($data['gastoPorDespesa']['descricao']) !!};
+    var valores = {!! json_encode($data['gastoPorDespesa']['porcentagem']) !!}
+    var cores = [];
+
+    var coresDinamicas = function() {
+      var r = Math.floor(Math.random() * 255);
+      var g = Math.floor(Math.random() * 255);
+      var b = Math.floor(Math.random() * 255);
+      return "rgb(" + r + "," + g + "," + b + ")";
+    };
+
+    for (var i in legendas) {
+      cores.push(coresDinamicas());
+    }
+
     new Chart(document.getElementById("pizza"),{
       type: 'pie',
       data: {
+        labels: legendas,
         datasets: [{
-          data: [{{ $data['gastoPorDespesa']['porcentagem'] }}],
-          backgroundColor:["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]
-        }],
-        labels:  {{ $data['gastoPorDespesa']['descricao'] }}
+          data: valores,
+          backgroundColor: cores
+        }]
       },
+      cutoutPercentage: 70
     });
   </script>
 
@@ -156,7 +172,7 @@
   </script>
   @else
   	<div>
-  		<p> Este parlamentar não possui gatos neste ano.</p>
+  		<p> Este parlamentar não possui gatos neste ano</p>
   	</div>
   @endif
 @endsection  
