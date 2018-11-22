@@ -132,6 +132,9 @@ class ParlamentarController extends BaseController
         $meses30dias = [4, 6, 9, 11];
         $totalGastoMes = [];
         $totalGastoAno = 0;
+        $despesas = [];
+        $fornecedores = [];
+        $top5Despesas = [];
 
         for ($mes = 1; $mes <= 12; $mes ++) {
             $dataInicial = $ano . '-' . $mes . '-01';
@@ -159,12 +162,26 @@ class ParlamentarController extends BaseController
             $totalGastoAno = $totalGastoAno + $totalGastoMes[$mes];
         }
 
+        if ($totalGastoAno == 0) {
+            $data = [
+                'parlamentar' => $parlamentar,
+                'totalGastoAno' => $totalGastoAno,
+                'totalGastoMes' => $totalGastoMes,
+                'gastoPorDespesa' => $despesas,
+                'fornecedores' => $fornecedores,
+                'top5Despesas' => $top5Despesas
+            ];
+
+            return view('estatisticas_parlamentar', [
+                'data' => $data
+            ]);
+        }
+
         $despesas = $this->despesasParlamentaresRepository->obterGastosPorDespesa([
             'parlamentarId' => $id,
             'ano' => $ano
         ]);
 
-        $despesaTotal = 0;
         foreach ($despesas as $index => $despesa) {
             $despesas['porcentagem'][] =  (($despesa['valorLiquido'] * 100) / $totalGastoAno);
             $despesas['descricao'][] =  'abc';
@@ -173,11 +190,28 @@ class ParlamentarController extends BaseController
         $despesas['porcentagem'] = json_encode($despesas['porcentagem']);
         $despesas['descricao'] = json_encode($despesas['descricao']);
 
+        $fornecedores = $this->despesasParlamentaresRepository->obterFornecedoresMaiorGasto([
+            'parlamentarId' => $id,
+            'ano' => $ano,
+            'limite' => 5
+        ]);
+
+        $top5Despesas = $this->despesasParlamentaresRepository->listarTodasDespesas([
+            'parlamentarId' => $id,
+            'ano' => $ano,
+            'limite' => 5,
+            'pagina' => 1,
+            'ordenacao' => 'dp.valorLiquido',
+            'direcao' => 'desc'
+        ]);
+
         $data = [
             'parlamentar' => $parlamentar,
             'totalGastoAno' => $totalGastoAno,
             'totalGastoMes' => $totalGastoMes,
-            'gastoPorDespesa' => $despesas
+            'gastoPorDespesa' => $despesas,
+            'fornecedores' => $fornecedores,
+            'top5Despesas' => $top5Despesas
         ];
 
         return view('estatisticas_parlamentar', [

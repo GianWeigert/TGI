@@ -63,11 +63,13 @@ class DespesasParlamentaresRepository extends EntityRepository
             dp.valorLiquido,
             dp.dataEmissao,
             d.descricao,
-            f.nome AS fornecedor
+            f.nome AS fornecedor,
+            tp.descricao as tipoDocumento
         ')
         ->innerJoin('dp.despesa', 'd')
         ->innerJoin('dp.fornecedor', 'f')
         ->innerJoin('dp.parlamentar', 'pa')
+        ->innerJoin('dp.tipoDocumento', 'tp')
         ->where('dp.valorLiquido > 0')
         ->setFirstResult($primeiroResultado)
         ->setMaxResults($parametros['limite']);
@@ -75,6 +77,18 @@ class DespesasParlamentaresRepository extends EntityRepository
         if (!empty($parametros['parlamentarId'])) {
             $qb->andWhere('pa.id = :parlamentarId');
             $qb->setParameter('parlamentarId', $parametros['parlamentarId']);
+        }
+
+        if (!empty($parametros['ano'])) {
+            $dataInicial = $parametros['ano'] . '-01-01';
+            $dataInicial = new \Datetime($dataInicial);
+
+            $dataFinal = $parametros['ano'] . '-12-31';
+            $dataFinal = new \Datetime($dataFinal);
+
+            $qb->andWhere('dp.dataEmissao BETWEEN :dataInicial AND :dataFinal')
+               ->setParameter('dataInicial', $dataInicial->format('Y-m-d'))
+               ->setParameter('dataFinal', $dataFinal->format('Y-m-d'));
         }
 
         $qb->orderBy($parametros['ordenacao'], $parametros['direcao']);
@@ -100,7 +114,7 @@ class DespesasParlamentaresRepository extends EntityRepository
         return $qb->getQuery()->getSingleScalarResult();
     }
 
-    public function obterGastosPorDespesa($parametros)
+    public function obterGastosPorDespesa(array $parametros)
     {
         $qb = $this->createQueryBuilder('dp');
 
@@ -133,6 +147,46 @@ class DespesasParlamentaresRepository extends EntityRepository
         $qb->groupBy('d.id');
 
         return $qb->getQuery()->getArrayResult();
+    }
 
+    public function obterFornecedoresMaiorGasto(array $parametros)
+    {
+        $qb = $this->createQueryBuilder('dp');
+
+        $qb->select('
+                f.id,
+                f.nome,
+                COUNT(dp.id) as vezesGasta,
+                SUM(dp.valorLiquido) as totalGasto
+            ')
+            ->innerJoin('dp.fornecedor', 'f')
+            ->innerJoin('dp.parlamentar', 'pa')
+            ->where('dp.valorLiquido > 0');
+
+        if (!empty($parametros['parlamentarId'])) {
+            $qb->andWhere('pa.id = :parlamentarId');
+            $qb->setParameter('parlamentarId', $parametros['parlamentarId']);
+        }
+
+        if (!empty($parametros['ano'])) {
+            $dataInicial = $parametros['ano'] . '-01-01';
+            $dataInicial = new \Datetime($dataInicial);
+
+            $dataFinal = $parametros['ano'] . '-12-31';
+            $dataFinal = new \Datetime($dataFinal);
+
+            $qb->andWhere('dp.dataEmissao BETWEEN :dataInicial AND :dataFinal')
+               ->setParameter('dataInicial', $dataInicial->format('Y-m-d'))
+               ->setParameter('dataFinal', $dataFinal->format('Y-m-d'));
+        }
+
+        if (!empty($parametros['limite'])) {
+            $qb->setMaxResults($parametros['limite']);
+        }
+
+        $qb->groupBy('f.id')
+           ->orderBy('totalGasto', 'desc');
+
+        return $qb->getQuery()->getArrayResult();
     }
 }
