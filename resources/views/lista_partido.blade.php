@@ -35,7 +35,7 @@
                 <h5 class="card-subtitle my-1">Qtd Parlamentares {{ $partido['quantidadeParlamentares'] }}</h5>
                  <img class="card-img img-thumbnail " data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [150x150]" src="{{ URL::asset($partido['image']) }}" data-holder-rendered="true">
               </div>
-              <a class="btn btn-block rounded-0 btn-primary mb-0 rou" href="{{ route('listar.parlamentares', ['partido' => $partido['sigla']]) }}">Escolher</a>
+              <a class="btn btn-block rounded-0 btn-primary mb-0 rou" href="{{ route('perfil.partido', ['partidoId' => $partido['id']]) }}">Escolher</a>
             </div>
         @endforeach
 

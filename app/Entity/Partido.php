@@ -66,4 +66,14 @@ class Partido
     {
         $this->image = $image;
     }
+
+    public function getInArray()
+    {
+        $array['id'] = $this->getId();
+        $array['nome'] = $this->getNome();
+        $array['sigla'] = $this->getSigla();
+        $array['image'] = $this->getImage();
+
+        return $array;
+    }
 }

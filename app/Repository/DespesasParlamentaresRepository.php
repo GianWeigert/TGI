@@ -189,4 +189,40 @@ class DespesasParlamentaresRepository extends EntityRepository
 
         return $qb->getQuery()->getArrayResult();
     }
+
+    public function obterGastosDosParlamentares(array $parametros)
+    {
+        $primeiroResultado = ($parametros['pagina'] - 1) * $parametros['limite'];
+
+        $qb = $this->createQueryBuilder('dp');
+
+        $qb->select('
+                pa.id as parlamentarId,
+                pa.nome as parlamentarNome,
+                e.nome as estado,
+                COUNT(dp.id) as vezesGasta,
+                SUM(dp.valorLiquido) as totalGasto
+            ')
+            ->innerJoin('dp.parlamentar', 'pa')
+            ->innerJoin('pa.estado', 'e')
+            ->innerJoin('pa.partido', 'p')
+            ->where('dp.valorLiquido > 0')
+            ->setFirstResult($primeiroResultado)
+            ->setMaxResults($parametros['limite']);
+
+        if (!empty($parametros['partido'])) {
+            $qb->andWhere('p.sigla = :partido');
+            $qb->setParameter('partido', $parametros['partido']);
+        }
+
+        if (!empty($parametros['estado'])) {
+            $qb->andWhere('e.nome = :estado');
+            $qb->setParameter('estado', $parametros['estado']);
+        }
+
+        $qb->groupBy('pa.id')
+           ->orderBy($parametros['ordenacao'], $parametros['direcao']);
+
+        return $qb->getQuery()->getArrayResult();
+    }
 }

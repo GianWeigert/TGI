@@ -92,7 +92,6 @@
           </tbody>
         </table>
       </div>
- 
     </div>
 
     @include('layout.pagination', ['pagination' => $data['pagination']])

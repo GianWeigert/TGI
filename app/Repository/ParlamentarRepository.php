@@ -34,7 +34,7 @@ class ParlamentarRepository extends EntityRepository
 
     public function listarTodosParlamentares(array $parametros)
     {
-        $primeiroResultado =($parametros['pagina'] - 1) * $parametros['limite'];
+        $primeiroResultado = ($parametros['pagina'] - 1) * $parametros['limite'];
 
         $qb = $this->createQueryBuilder('pa');
 
@@ -87,5 +87,23 @@ class ParlamentarRepository extends EntityRepository
         ->setParameter('id', $id);
 
         return $qb->getQuery()->getSingleResult();
+    }
+
+    public function estadosMaisParalmentaresPartido($sigla)
+    {
+        $qb = $this->createQueryBuilder('pa');
+
+        $qb->select('
+            e.nome as estado,
+            count(pa.id) as quantidadeParlamentares
+        ')
+        ->innerJoin('pa.partido', 'p')
+        ->innerJoin('pa.estado', 'e')
+        ->andWhere('p.sigla = :sigla')
+        ->setParameter('sigla', $sigla)
+        ->orderBy('quantidadeParlamentares', 'desc')
+        ->groupBy('e.nome');
+
+        return $qb->getQuery()->getArrayResult();
     }
 }

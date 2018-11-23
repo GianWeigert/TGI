@@ -28,6 +28,7 @@ class PartidoRepository extends EntityRepository
         $qb = $this->createQueryBuilder('p');
 
         $qb ->select('
+                p.id,
                 p.nome,
                 p.sigla,
                 p.image
