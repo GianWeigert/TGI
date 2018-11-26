@@ -103,7 +103,7 @@
                 <td>{{ $despesa['descricao'] }}</td>
                 <td>{{ $despesa['fornecedor'] }}</td>
                 <td>{!! $despesa['dataEmissao']->format('d/m/Y') !!}</td>
-                <td>R$ {!! str_replace('.', ',', $fornecedor['totalGasto']) !!}</td>
+                <td>R$ {!! str_replace('.', ',', $despesa['valorLiquido']) !!}</td>
                 <td>{{ $despesa['tipoDocumento']}}</td>
               </tr>
             @endforeach
