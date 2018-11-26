@@ -57,5 +57,10 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "post-install-cmd": [
+        "php artisan clear-compiled",
+        "php artisan optimize",
+        "chmod -R 777 public/"
+    ]
 }
