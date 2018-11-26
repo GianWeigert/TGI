@@ -37,17 +37,6 @@
 
         <div class="card-subtitle col-lg-4 col-sm-12 col-md-4 ">
 
-          <h5> Parlamentar que mais gastou: </h5>
-
-          <p>
-            R$ {!! 'Lula' !!}
-          </p>
-          <h5> Parlamentar que menos gastou: </h5>
-
-          <p>
-             {!! 'Dilma' !!}
-          </p>
-
         </div>
 
       </div>
@@ -83,9 +72,8 @@
             @endforeach
           </tbody>
         </table>
-
-        @include('layout.pagination', ['pagination' => $data['pagination']])
       </div>
     </div>
+    @include('layout.pagination', ['pagination' => $data['pagination']])
   </div>
 @endsection

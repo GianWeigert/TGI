@@ -83,7 +83,7 @@
     </div>
 
     <div class="col-md-12">
-      <h1 class="display-4 text-center">Maiores gastos top</h1>
+      <h1 class="display-4 text-center">Maiores gastos do ano (Top 5)</h1>
 
       <div class="table-responsive">
         <table class="table table-striped col-sm-12">
